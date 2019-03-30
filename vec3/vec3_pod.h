@@ -1,10 +1,11 @@
-#ifndef H_VEC3
-#define H_VEC3
+#ifndef H_VEC3_POD
+#define H_VEC3_POD
 
+// POD for compatiblity with C
 struct vec3{
 	union{
 		float coord[3];
-	
+
 		struct{
 			float x;
 			float y;
@@ -16,9 +17,7 @@ struct vec3{
 			float g;
 			float b;
 		};
-	}
+	};
 };
-
-
 
 #endif
