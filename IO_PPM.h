@@ -27,8 +27,6 @@ struct Buffer{
 
 	void display() const;
 
-// private ?
-
 	int sizeX;
 	int sizeY;
 

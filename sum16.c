@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <limits.h>
+#include <stdbool.h>
 
 /*
 Can you find two numbers that add to 16 ?
@@ -53,7 +54,7 @@ bool optim(int nb_values, int* values, int sum_value, int* output_couple){
 
 }
 
-bool optim_reddit(int nb_values, int* values, int sum_value, int* output_couple){
+bool optim_second(int nb_values, int* values, int sum_value, int* output_couple){
 
 	int ilow = 0;
 	int ihigh = nb_values - 1;
@@ -78,17 +79,17 @@ bool optim_reddit(int nb_values, int* values, int sum_value, int* output_couple)
 
 int main(){
 	// Problem data
-	int nb_values = 7;
-	int array[nb_values] = {1, 3, 5, 8, 12, 13, 22};
-	int sum_value = 19;
-	int max_couple = 3;
-	int output_couple[max_couple * 2] = {-1, -1};
+	const int nb_values = 7;
+	int array[7] = {1, 3, 5, 8, 12, 13, 22};
+	int sum_value = 16;
+	const int max_couple = 3;
+	int output_couple[3 * 2] = {-1, -1, -1, -1, -1, -1};
 
 	printf("naive_nsquare solution: %i ", naive_nsquare(nb_values, array, sum_value, output_couple));
 	printf(" with %i %i\n", output_couple[0], output_couple[1]);
 	printf("optim solution: %i ", optim(nb_values, array, sum_value, output_couple));
 	printf(" with %i %i\n", output_couple[0], output_couple[1]);
-	printf("optim_reddit solution: %i ", optim_reddit(nb_values, array, sum_value, output_couple));
+	printf("optim_second solution: %i ", optim_second(nb_values, array, sum_value, output_couple));
 	printf(" with %i %i\n", output_couple[0], output_couple[1]);
 
 	// Performance testing
@@ -106,16 +107,16 @@ int main(){
 	}
 	clock_t end_optim = clock();
 
-	clock_t begin_optim_reddit = clock();
+	clock_t begin_optim_second = clock();
 	for(unsigned int ioptim = 0; ioptim != nexecutions; ++ioptim){
-		optim_reddit(nb_values, array, sum_value, output_couple);
+		optim_second(nb_values, array, sum_value, output_couple);
 	}
-	clock_t end_optim_reddit = clock();
+	clock_t end_optim_second = clock();
 
 	printf("naive_nsquare: %f\n", (double)(end_naive - begin_naive) / CLOCKS_PER_SEC);
 	printf("optim: %f\n", (double)(end_optim - begin_optim) / CLOCKS_PER_SEC);
-	printf("optim_reddit: %f\n", (double)(end_optim_reddit - begin_optim_reddit) / CLOCKS_PER_SEC);
+	printf("optim_second: %f\n", (double)(end_optim_second - begin_optim_second) / CLOCKS_PER_SEC);
 	printf("ratio_optim_naive: %f\n", (double)(end_optim - begin_optim) / (double)(end_naive - begin_naive));
-	printf("ratio_optim_reddit_naive: %f\n", (double)(end_optim_reddit - begin_optim_reddit) / (double)(end_naive - begin_naive));
-	printf("ratio_optim_reddit_optim: %f\n", (double)(end_optim_reddit - begin_optim_reddit) / (double)(end_optim - begin_optim));
+	printf("ratio_optim_second_naive: %f\n", (double)(end_optim_second - begin_optim_second) / (double)(end_naive - begin_naive));
+	printf("ratio_optim_second_optim: %f\n", (double)(end_optim_second - begin_optim_second) / (double)(end_optim - begin_optim));
 }
