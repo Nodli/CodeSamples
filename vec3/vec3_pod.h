@@ -53,8 +53,15 @@ vec3_pod<T> operator/(const vec3_pod<T>& lhs, const float rhs);
 #include "vec3_operator.inl"
 
 // math operations
+
 template<typename T>
-float dot(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+T length(const vec3_pod<T>& vec);
+
+template<typename T>
+T squared_length(const vec3_pod<T>& vec);
+
+template<typename T>
+T dot(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
 
 template<typename T>
 vec3_pod<T> cross(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
