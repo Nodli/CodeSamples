@@ -1,23 +1,64 @@
 #ifndef H_VEC3_POD
 #define H_VEC3_POD
 
-// POD for compatiblity with C
-struct vec3{
+template<typename T>
+struct vec3_pod{
 	union{
-		float coord[3];
+		T coord[3];
 
 		struct{
-			float x;
-			float y;
-			float z;
+			T x;
+			T y;
+			T z;
 		};
 
 		struct{
-			float r;
-			float g;
-			float b;
+			T r;
+			T g;
+			T b;
 		};
 	};
 };
+
+// in-place math operators
+template<typename T>
+vec3_pod<T>& operator+=(vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+template<typename T>
+vec3_pod<T>& operator-=(vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+
+template<typename T>
+vec3_pod<T>& operator+=(vec3_pod<T>& lhs, const float rhs);
+template<typename T>
+vec3_pod<T>& operator-=(vec3_pod<T>& lhs, const float rhs);
+template<typename T>
+vec3_pod<T>& operator*=(vec3_pod<T>& lhs, const float rhs);
+template<typename T>
+vec3_pod<T>& operator/=(vec3_pod<T>& lhs, const float rhs);
+
+// copy math operators
+template<typename T>
+vec3_pod<T> operator+(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+template<typename T>
+vec3_pod<T> operator-(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+
+template<typename T>
+vec3_pod<T> operator+(const vec3_pod<T>& lhs, const float rhs);
+template<typename T>
+vec3_pod<T> operator-(const vec3_pod<T>& lhs, const float rhs);
+template<typename T>
+vec3_pod<T> operator*(const vec3_pod<T>& lhs, const float rhs);
+template<typename T>
+vec3_pod<T> operator/(const vec3_pod<T>& lhs, const float rhs);
+
+#include "vec3_operator.inl"
+
+// math operations
+template<typename T>
+float dot(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+
+template<typename T>
+vec3_pod<T> cross(const vec3_pod<T>& lhs, const vec3_pod<T>& rhs);
+
+#include "vec3_math.inl"
 
 #endif

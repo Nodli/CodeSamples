@@ -1,8 +1,7 @@
-#include "vec3_pod.h"
-#include "vec3_operator.h"
-#include "vec3_math.h"
+#include "vec3.h"
 
-#include <stdio.h>
+#include <iostream>
+#include <cassert>
 
 int main(){
 	vec3 v = {1., 2., 3.};
@@ -27,9 +26,9 @@ int main(){
 	dot(v, v2);
 	cross(v, v2);
 
-	printf("v.coord[0] %f v.coord[1] %f v.coord[2] %f\n", v.coord[0], v.coord[1], v.coord[2]);
-	printf("v.x %f v.y %f v.z %f\n", v.x, v.y, v.z);
-	printf("v.r %f v.g %f v.b %f\n", v.r, v.g, v.b);
+	std::cout << "v.coord[0] " << v.coord[0] << " v.coord[1] " << v.coord[1] << " v.coord[2] " << v.coord[2] << std::endl;
+	std::cout << "v.x " << v.x << " v.y " << v.y << " v.z " << v.z << std::endl;
+	std::cout << "v.r " << v.r << " v.g " << v.g << " v.b " << v.b << std::endl;
 
 	return 0;
 }
