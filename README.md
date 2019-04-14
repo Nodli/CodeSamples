@@ -9,9 +9,10 @@ Resolution of an algorithmic problem taken from [/r/learnprogramming](https://ww
 _Given a list containing integers in order, for example: [1, 3, 5, 8, 12, 13, 22] and a target number, for example 16._
 _Can you find a pair of numbers whose sum equals the target number?_
 
-## vec3
-A simple templated vec3 implementation for my own use
+## vec2 / vec3
+Simple implementations of vec2 and vec3 classes similar to the GLSL standard
+Both struct are kept as POD to allow easy type punning to float arrays
 
 ## IO\_PPM
-A buffer class with .ppm import and export functions
+A buffer class with .ppm image import and export functions
 
