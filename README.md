@@ -18,6 +18,6 @@ _Can you find a pair of numbers whose sum equals the target number?_
 
 ## vec2 / vec3
 Simple implementations of vec2 and vec3 classes similar to the GLSL standard
-struct are kept POD to allow easy type punning to float arrays
+struct are kept POD to allow type punning to float arrays
 
 
