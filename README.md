@@ -1,7 +1,14 @@
 # CodeSamples
 
+## Buffer2D
+Simple templated Buffer2D class
+Usefull to store and process images
+
 ## MPI
 Implementation of a few basic exercices in MPI from [LyonCalcul](http://lyoncalcul.univ-lyon1.fr/ed/2019/)
+
+## ppm
+Functions to export and import P3 and P6 .ppm image files
 
 ## sum16
 Resolution of an algorithmic problem taken from [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/9vp1vv/an_interesting_problem_from_a_job_interview_at/)
@@ -11,8 +18,6 @@ _Can you find a pair of numbers whose sum equals the target number?_
 
 ## vec2 / vec3
 Simple implementations of vec2 and vec3 classes similar to the GLSL standard
-Both struct are kept as POD to allow easy type punning to float arrays
+struct are kept POD to allow easy type punning to float arrays
 
-## IO\_PPM
-A buffer class with .ppm image import and export functions
 
