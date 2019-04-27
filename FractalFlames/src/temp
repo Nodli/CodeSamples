@@ -1,0 +1,175 @@
+/*
+namespace Flame{
+
+	struct Function{
+		float w; // suggest non-negative and sum to one for a given basis function set
+		float a;
+		float b;
+		float c;
+		float d;
+		float e;
+		float f;
+
+		float probability;
+	};
+
+	typedef void(*Variation)(const float, const float, float&, float&);
+
+	namespace Library{
+		void V0(const float ix, const float iy, float& ox, float& oy);
+		void V1(const float ix, const float iy, float& ox, float& oy);
+		void V2(const float ix, const float iy, float& ox, float& oy);
+
+		static Variation complete[] = {&V0, &V1, &V2};
+	};
+
+	struct Functor{
+		Functor(const std::vector<Function>& func, const std::vector<Variation>& param);
+
+		std::vector<Function>& functions();
+		std::vector<Variation>& variations();
+
+		float operator()(const float x, const float y);
+
+	private:
+		std::vector<Function> func;
+		std::vector<Variation> var;
+
+		// accessor are usefull to recompute probabilities
+		bool dirty_probabilities = true;
+		std::vector<float> func_probabilities;
+	};
+
+	namespace Default{
+		constexpr bool function_uniform = true;
+		constexpr float function_min = 0.f;
+		constexpr float function_max = 1.f;
+
+		constexpr int variation_size = 10;
+		constexpr bool variation_normalize = false;
+		constexpr float variation_min = -1.f;
+		constexpr float variation_max = 1.f;
+	};
+
+	std::vector<Function> random_functions(int size = -1,
+			const bool uniform = Default::function_uniform,
+			const float min = Default::function_min, const float max = Default::function_max);
+
+	std::vector<Variation> random_variations(const int size = Default::variation_size,
+			const bool normalize = Default::variation_normalize,
+			const float min = Default::variation_min, const float max = Default::variation_max);
+
+	Functor random_functor();
+};
+*/
+
+/*
+namespace Flame{
+	namespace Library{
+		void V0(const float ix, const float iy, float& ox, float& oy){
+			ox = ix;
+			oy = iy;
+		};
+
+		void V1(const float ix, const float iy, float& ox, float& oy){
+			ox = sin(ix);
+			oy = sin(iy);
+		};
+
+		void V2(const float ix, const float iy, float& ox, float& oy){
+			float norm = ix * ix + iy * iy;
+			ox = ix / norm;
+			oy = iy / norm;
+		};
+	};
+
+	Functor::Functor(const std::vector<Function>& ifunc, const std::vector<Variation>& ivar)
+	: func(ifunc), var(ivar){
+	}
+
+	float Functor::operator()(const float x, const float y){
+		// check validity
+		if(func.size() == 0 || var.size() == 0){
+			return 0.f;
+		}
+
+		// rebuilding normalized function probabilities if necessary
+		if(dirty_probabilities){
+			func_probabilities.resize(func.size() + 1);
+			func_probabilities[0] = 0.f;
+
+			for(unsigned int iFunc = 0; iFunc != func.size(); ++iFunc){
+				func_probabilities[iFunc + 1] = func_probabilities[iFunc] + func[iFunc].probability;
+			}
+
+			for(unsigned int iFunc = 0; iFunc != func.size(); ++iFunc){
+				func_probabilities[iFunc] /= func_probabilities[func.size() - 1];
+			}
+		}
+
+		// choose function
+		const int function_pos = binary_search(func_probabilities, rand_float(0.f, 1.f));
+
+		float result = 0.f;
+		for(unsigned int iVar = 0; iVar != var.size(); ++iVar){
+
+		}
+	}
+
+	std::vector<Function> random_functions(int size,
+
+		const bool uniform,
+		const float min, const float max){
+
+		std::vector<Function> output;
+
+		// determine size of output
+		if(size == -1){
+			size = rand_int(1, sizeof(Library::complete) - 1);
+		}
+		output.resize(size);
+
+		// random sample
+		for(int iSample = 0; iSample != size; ++iSample){
+			output[iSample].function = Library::complete[rand_int(0, sizeof(Library::complete) - 1)];
+			output[iSample].probability = (uniform) ? (1) : (rand_int(min, max));
+		}
+
+		return output;
+	}
+
+	std::vector<Variation> random_variations(const int size,
+			const bool normalize,
+			const float min, const float max){
+
+		std::vector<Variation> output(size);
+
+		// random value
+		float w_total  = 0.f;
+		for(int iParam = 0; iParam != size; ++iParam){
+			output[iParam].w = rand_float(min, max);
+			w_total += output[iParam].w;
+
+			output[iParam].a = rand_float(min, max);
+			output[iParam].b = rand_float(min, max);
+			output[iParam].c = rand_float(min, max);
+			output[iParam].d = rand_float(min, max);
+			output[iParam].e = rand_float(min, max);
+			output[iParam].f = rand_float(min, max);
+		}
+
+		// normalizing
+		if(normalize){
+			for(int iParam = 0; iParam != size; ++iParam){
+				output[iParam].w /= w_total;
+			}
+		}
+
+		return output;
+	}
+
+	Functor random_functor(){
+		return {random_functions(), random_variations()};
+	}
+};
+*/
