@@ -23,13 +23,15 @@ int main(){
 
 	// export & import comparison of a P3 PPM image
 
-	ofile.open("imageP3.ppm");
+	ofile.open("imageP3_stream.ppm");
 	writeP3(ofile, osizeX, osizeY, odata);
 	ofile.close();
+	status &= writeP3("imageP3_string.ppm", osizeX, osizeY, odata);
 
-	ifile.open("imageP3.ppm");
+	ifile.open("imageP3_stream.ppm");
 	status &= readP3(ifile, isizeX, isizeY, idata);
 	ifile.close();
+	status &= readP3("imageP3_string.ppm", isizeX, isizeY, idata);
 
 	status &= (isizeX == osizeX);
 	status &= (isizeY == osizeY);
@@ -45,13 +47,15 @@ int main(){
 
 	// export & import comparison of a P6 PPM image
 
-	ofile.open("imageP6.ppm");
+	ofile.open("imageP6_stream.ppm");
 	writeP6(ofile, osizeX, osizeY, odata);
 	ofile.close();
+	status &= writeP6("imageP6_string.ppm", osizeX, osizeY, odata);
 
-	ifile.open("imageP6.ppm");
+	ifile.open("imageP6_stream.ppm");
 	status &= readP6(ifile, isizeX, isizeY, idata);
 	ifile.close();
+	status &= readP6("imageP6_string.ppm", isizeX, isizeY, idata);
 
 	status &= (isizeX == osizeX);
 	status &= (isizeY == osizeY);
