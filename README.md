@@ -4,6 +4,9 @@
 Simple templated Buffer2D class
 Usefull to store and process images
 
+## FractalFlames
+Tools to create and render Iterated Function Systems and Fractal Flames
+
 ## MPI
 Implementation of a few basic exercices in MPI from [LyonCalcul](http://lyoncalcul.univ-lyon1.fr/ed/2019/)
 
