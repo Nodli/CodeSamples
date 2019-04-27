@@ -2,10 +2,14 @@
 #define BUFFER_H
 
 // implementation is row major
+// origin is at the top left corner like in a matrix
 template <typename T>
 struct Buffer2D{
+
+	// ---- contructor ---- //
 	Buffer2D();
 	Buffer2D(const unsigned int& sizeX, const unsigned int& sizeY);
+	Buffer2D(const unsigned int& sizeX, const unsigned int& sizeY, const T& value);
 
 	Buffer2D(const Buffer2D<T>& src);
 	Buffer2D(Buffer2D<T>&& src);
@@ -14,6 +18,8 @@ struct Buffer2D{
 	Buffer2D(const Buffer2D<otherT>& src);
 
 	~Buffer2D();
+
+	// ---- operator ---- //
 
 	Buffer2D<T>& operator=(const Buffer2D<T>& src);
 	Buffer2D<T>& operator=(Buffer2D<T>&& src);
@@ -29,11 +35,23 @@ struct Buffer2D{
 	inline T operator()(const unsigned int& x, const unsigned int& y) const;
 	inline T& operator()(const unsigned int& x, const unsigned int& y);
 
-	// set all data values to the provided value
-	Buffer2D<T>& set(const T& value);
+	// ---- storage related methods ---- //
 
-	int sizeX;
-	int sizeY;
+	// set all data values to the provided value
+	Buffer2D<T>& fill(const T& value);
+
+	// resize to the provided size
+	// assume current content is discarded
+	void resize(const unsigned int& sizeX, const unsigned int& sizeY);
+
+	// ---- math operations ---- //
+
+	T min() const;
+	T max() const;
+
+	// ---- data ---- //
+	unsigned int sizeX;
+	unsigned int sizeY;
 
 	T* data;
 };

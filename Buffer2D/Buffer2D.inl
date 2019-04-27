@@ -1,8 +1,8 @@
 #ifndef BUFFER_INL
 #define BUFFER_INL
 
-#include <cstring>
-#include <cassert>
+#include <cstring> // memcpy
+#include <cassert> // assert
 
 template<typename T>
 Buffer2D<T>::Buffer2D(): sizeX(0), sizeY(0), data(nullptr){
@@ -14,6 +14,22 @@ Buffer2D<T>::Buffer2D(const unsigned int& i_sizeX, const unsigned int& i_sizeY)
 
 	if(sizeX * sizeY){
 		data = new T[sizeX * sizeY];
+	}else{
+		data = nullptr;
+	}
+}
+
+template<typename T>
+Buffer2D<T>::Buffer2D(const unsigned int& i_sizeX, const unsigned int& i_sizeY, const T& value)
+: sizeX(i_sizeX), sizeY(i_sizeY){
+
+	if(sizeX * sizeY){
+		data = new T[sizeX * sizeY];
+
+		for(unsigned int iValue = 0; iValue != sizeX * sizeY; ++iValue){
+			data[iValue] = value;
+		}
+
 	}else{
 		data = nullptr;
 	}
@@ -85,6 +101,8 @@ Buffer2D<T>& Buffer2D<T>::operator=(const Buffer2D<T>& src){
 
 	sizeX = src.sizeX;
 	sizeY = src.sizeY;
+
+	return *this;
 }
 
 template<typename T>
@@ -97,6 +115,8 @@ Buffer2D<T>& Buffer2D<T>::operator=(Buffer2D<T>&& src){
 
 	sizeX = src.sizeX;
 	sizeY = src.sizeY;
+
+	return *this;
 }
 
 template<typename T>
@@ -124,6 +144,8 @@ Buffer2D<T>& Buffer2D<T>::operator=(const Buffer2D<otherT>& src){
 
 	sizeX = src.sizeX;
 	sizeY = src.sizeY;
+
+	return *this;
 }
 
 template<typename T>
@@ -151,12 +173,62 @@ inline T& Buffer2D<T>::operator()(const unsigned int& x, const unsigned int& y){
 }
 
 template<typename T>
-Buffer2D<T>& Buffer2D<T>::set(const T& value){
+Buffer2D<T>& Buffer2D<T>::fill(const T& value){
 	for(unsigned int iT = 0; iT != sizeX * sizeY; ++iT){
 		data[iT] = value;
 	}
 
 	return *this;
+}
+
+template<typename T>
+void Buffer2D<T>::resize(const unsigned int& i_sizeX, const unsigned int& i_sizeY){
+
+	// modifying alocation if needed
+	if((i_sizeX * i_sizeY) != (sizeX * sizeY)){
+		if(data){
+			delete[] data;
+		}
+
+		if(i_sizeX * i_sizeY){
+			data = new T[i_sizeX * i_sizeY];
+		}else{
+			data = nullptr;
+		}
+	}
+
+	sizeX = i_sizeX;
+	sizeY = i_sizeY;
+}
+
+template<typename T>
+T Buffer2D<T>::min() const{
+	assert(data != nullptr);
+
+	T min_value = data[0];
+
+	for(unsigned int iT = 1; iT != sizeX * sizeY; ++iT){
+		if(data[iT] < min_value){
+			min_value = data[iT];
+		}
+	}
+
+	return min_value;
+}
+
+template<typename T>
+T Buffer2D<T>::max() const{
+	assert(data != nullptr);
+
+	T max_value = data[0];
+
+	for(unsigned int iT = 1; iT != sizeX * sizeY; ++iT){
+		if(data[iT] > max_value){
+			max_value = data[iT];
+		}
+	}
+
+	return max_value;
 }
 
 #endif
