@@ -20,7 +20,7 @@ _Given a list containing integers in order, for example: [1, 3, 5, 8, 12, 13, 22
 _Can you find a pair of numbers whose sum equals the target number?_
 
 ## vec2 / vec3
-Simple implementations of vec2 and vec3 classes similar to the GLSL standard
-struct are kept POD to allow type punning to float arrays
+Simple implementations of vec2 and vec3 classes similar to the GLSL standard.
+Struct are kept POD to allow type punning to float arrays
 
 
