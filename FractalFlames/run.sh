@@ -1,1 +1,2 @@
-./build/FractalFlames.exe
+cd image 
+../build/FractalFlames.exe

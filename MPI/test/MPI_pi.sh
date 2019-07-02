@@ -1,3 +1,5 @@
 #!/bin/bash
-mpicc MPI_pi.c -o pi.exe
-mpiexec -n 4 pi.exe 100000
+mkdir -p build
+mpicc MPI_pi.c -o build/pi.exe
+cd build
+mpiexec -n 4 ./pi.exe 100000
