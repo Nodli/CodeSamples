@@ -1,9 +1,5 @@
 # CodeSamples
 
-## Buffer2D
-Simple templated Buffer2D class
-Usefull to store and process images
-
 ## FractalFlames
 Tools to create and render Iterated Function Systems and Fractal Flames
 
@@ -18,9 +14,3 @@ Resolution of an algorithmic problem taken from [/r/learnprogramming](https://ww
 
 _Given a list containing integers in order, for example: [1, 3, 5, 8, 12, 13, 22] and a target number, for example 16._
 _Can you find a pair of numbers whose sum equals the target number?_
-
-## vec2 / vec3
-Simple implementations of vec2 and vec3 classes similar to the GLSL standard.
-Struct are kept POD to allow type punning to float arrays
-
-
