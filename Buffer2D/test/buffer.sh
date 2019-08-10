@@ -1,3 +1,5 @@
 #!/bin/bash
-g++ main.cpp -I .. -o buffer.exe -O2
+mkdir -p build
+g++ main.cpp -I .. -o build/buffer.exe -O2
+cd build
 ./buffer.exe
