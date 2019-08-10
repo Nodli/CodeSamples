@@ -22,12 +22,6 @@ struct Function{
 	void operator()(float& x, float& y) const;
 };
 
-struct Variation{
-	std::vector<float> param;
-
-	void operator()(float& x, float& y) const;
-};
-
 namespace Variation{
 	void V0(float& x, float& y);
 	void V1(float& x, float& y);
