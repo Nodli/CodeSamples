@@ -1,3 +1,5 @@
 #!/bin/bash
-gcc ../reverse_list.c -o reverse_list.exe
+mkdir -p build
+gcc ../reverse_list.c -o build/reverse_list.exe
+cd build
 ./reverse_list.exe
