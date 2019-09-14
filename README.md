@@ -21,3 +21,6 @@ Some solutions for [/r/learnprogramming](https://www.reddit.com/r/learnprogrammi
 
 _Given a list containing integers in order, for example: [1, 3, 5, 8, 12, 13, 22] and a target number, for example 16._
 _Can you find a pair of numbers whose sum equals the target number?_
+
+## win32WindowSoundInput
+Windows platform specific code to open a window, play sound and register inputs [Handmade Hero](https://guide.handmadehero.org/code/)
