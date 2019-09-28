@@ -1,12 +1,13 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-// implementation is row major
-// origin is at the top left corner like in a matrix
+// The allocation is row major
+// The origin (0, 0) of the buffer is at the top left corner
 template <typename T>
 struct Buffer2D{
 
 	// ---- contructor ---- //
+
 	Buffer2D();
 	Buffer2D(const unsigned int& sizeX, const unsigned int& sizeY);
 	Buffer2D(const unsigned int& sizeX, const unsigned int& sizeY, const T& value);
@@ -14,6 +15,7 @@ struct Buffer2D{
 	Buffer2D(const Buffer2D<T>& src);
 	Buffer2D(Buffer2D<T>&& src);
 
+    // Conversion from another template type
 	template<typename otherT>
 	Buffer2D(const Buffer2D<otherT>& src);
 
@@ -24,6 +26,7 @@ struct Buffer2D{
 	Buffer2D<T>& operator=(const Buffer2D<T>& src);
 	Buffer2D<T>& operator=(Buffer2D<T>&& src);
 
+    // Conversion from another template type
 	template<typename otherT>
 	Buffer2D<T>& operator=(const Buffer2D<otherT>& src);
 
@@ -40,8 +43,10 @@ struct Buffer2D{
 	// set all data values to the provided value
 	Buffer2D<T>& fill(const T& value);
 
-	// resize to the provided size
-	// assume current content is discarded
+    // The size variables and memory allocation are updated to reflect the new size
+    // The memory is reallocated only if
+    // sizeX * sizeY != previous_sizeX * previous_sizeY
+    // but in the general case you should assume that the content is lost
 	void resize(const unsigned int& sizeX, const unsigned int& sizeY);
 
 	// ---- math operations ---- //
@@ -50,6 +55,7 @@ struct Buffer2D{
 	T max() const;
 
 	// ---- data ---- //
+
 	unsigned int sizeX;
 	unsigned int sizeY;
 

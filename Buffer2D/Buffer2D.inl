@@ -4,6 +4,9 @@
 #include <cstring> // memcpy
 #include <cassert> // assert
 
+// The memory is allocated using new instead of malloc because the class is
+// templated and we want to call the constructor of T in the general case.
+
 template<typename T>
 Buffer2D<T>::Buffer2D(): sizeX(0), sizeY(0), data(nullptr){
 }
