@@ -2,7 +2,6 @@
 #define BMP_H
 
 #include <fstream>
-#include <string>
 
 // NOTE(hugo): Reference Documentation
 // https://en.wikipedia.org/wiki/BMP_file_format
@@ -15,7 +14,7 @@
 void writeBMP(std::ofstream& file,
 		const int sizeX, const int sizeY,
 		const char* const data);
-bool writeBMP(const std::string& filename,
+bool writeBMP(const char* const filename,
 		const int sizeX, const int sizeY,
 		const char* const data);
 

@@ -15,9 +15,6 @@ void writeBMP(std::ofstream& file,
     int alloc_size = alloc_bytes_per_row * sizeY;
     int file_size = total_header_size + alloc_size;
 
-    int* iptr = (&file_size);
-    char* cptr = (char*)iptr;
-
     char header[header_size] = {
         'B', 'M',
         ((char*)&file_size)[0], ((char*)&file_size)[1], ((char*)&file_size)[2], ((char*)&file_size)[3],
@@ -61,7 +58,7 @@ void writeBMP(std::ofstream& file,
     }
 }
 
-bool writeBMP(const std::string& filename,
+bool writeBMP(const char* const filename,
 		const int sizeX, const int sizeY,
 		const char* const data){
 
