@@ -7,6 +7,8 @@ Usefull to store and process images
 ## FractalFlames
 Tools to create and render Iterated Function Systems and Fractal Flames
 
+<img src="./FractalFlames/image/barnsley_fern.png" width="200"/><img src="./FractalFlames/image/heighway_dragon_cartesian.png" width="200"/><img src="./FractalFlames/image/levy_curve.png" width="200"/><img src="./FractalFlames/image/serpinski_gasket.png" width="200"/>
+
 ## MPI
 Implementation of a few basic exercices in MPI from [LyonCalcul](http://lyoncalcul.univ-lyon1.fr/ed/2019/)
 
@@ -17,9 +19,9 @@ Functions to export and import P3 and P6 .ppm image files
 Reversal of a linked list
 
 ## Shadertoy
-Shadertoy code backup
-
 [Chromosome](https://www.shadertoy.com/view/XlcfDn)
+
+<img src="./Shadertoy/chromosome_chromosome.png" width="300"/> <img src="./Shadertoy/chromosome_dna.png" width="300"/> 
 
 ## sum16
 Some solutions for [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/9vp1vv/an_interesting_problem_from_a_job_interview_at/)
